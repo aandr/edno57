@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Едно57: Добре дошли!{% endblock %}
+
+{% block body %}
+    {% include "post_form.html" %}
+
+    <section>
+    <h2>Последните хайкута:</h2>
+    {% for haiku in latest_haikus %}
+        {% include "partial_haiku.html" %}
+    {% endfor %}
+    </section>
+{% endblock %}

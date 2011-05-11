@@ -48,7 +48,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = SITE_ROOT + 'static/'
+#STATIC_ROOT = SITE_ROOT + 'static_files/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -57,10 +57,11 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = '/admin_static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT, 'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -98,20 +99,6 @@ TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates'),
 )
 
-INSTALLED_APPS = (
-    'django_extensions',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-
-    # Add your apps here
-)
-
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.
@@ -134,6 +121,21 @@ LOGGING = {
         },
     }
 }
+
+INSTALLED_APPS = (
+    'django_extensions',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+
+    # Add your apps here
+    'haikus',
+)
 
 
 try:

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Едно57: {{ user.username }}{% endblock %}
+
+{% block body %}
+    {% if is_me %}
+    {% include "post_form.html" %}
+    {% endif %}
+
+    <section>
+    {% if is_me %}
+    <h2>Твойте хайкута</h2>
+    {% else %}
+    <h2>Хайкутата на {{ user.username }}</h2>
+    {% endif %}
+
+    {% for haiku in haikus %}
+        {% include "partial_haiku.html" %}
+    {% endfor %}
+    </section>
+{% endblock %}

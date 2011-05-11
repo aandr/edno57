@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Едно57{% endblock %}</title>
+        <link rel="stylesheet" href="/static/style.css" type="text/css">
+    </head>
+    <body>
+        <div id="wrapper">
+        <header>
+        <nav>
+        {% if request.user.is_authenticated %}
+        Здрасти, <b><a href="{% url user-page request.user.username %}">{{ request.user.username }}</a></b>! |
+        <a href="{% url logout %}">Излез</a>
+        {% else %}
+        <a href="{% url login %}">Влзе</a>
+        {% endif %}
+        </nav>
+        <h1><a href="{% url homepage %}">едно57</a></h1>
+        </header>
+
+        {% block body %}
+        Body goes here
+        {% endblock %}
+
+        </div>
+        <footer>
+        <p>Едно57 се храни с понита. <a href="http://fmi.py-bg.net">Python във ФМИ</a></p>
+        </footer>
+    </body>
+</html>
