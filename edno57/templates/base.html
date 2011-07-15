@@ -9,17 +9,13 @@
         <header>
         <nav>
         {% if request.user.is_authenticated %}
-        Здрасти, <b><a href="{% url user-page request.user.username %}">{{ request.user.username }}</a></b>! |
-        <a href="{% url logout %}">Излез</a>
+        Здрасти, <b><a href="/{{ request.user.username }}">{{ request.user.username }}</a></b>! |
+        <a href="/logout">Излез</a>
         {% else %}
-<<<<<<< HEAD
-        <a href="{% url login %}">Влез в едно57</a>
-=======
-        <a href="{% url login %}">Влез</a>
->>>>>>> 709e812d71868ab41326e75ab2a97dda9c227d4a
+        <a href="/login">Влез в едно57</a>
         {% endif %}
         </nav>
-        <h1><a href="{% url homepage %}">едно57</a></h1>
+        <h1><a href="/">едно57</a></h1>
         </header>
 
         {% block body %}

@@ -1,5 +1,5 @@
 <section class="post">
-<form method="POST" action="{% url add-haiku %}">
+<form method="POST" action="/add">
     {% csrf_token %}
     <textarea name="text" rows="3" placeholder="Напиши хайкуто тук"></textarea>
     <input type="submit" value="Жега">
