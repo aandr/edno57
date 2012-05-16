@@ -14,7 +14,7 @@
     <h2>Хайкутата на {{ user.username }}</h2>
     {% endif %}
 
-    {% for haiku in haikus %}
+    {% for haiku in haiku_list %}
         {% include "partial_haiku.html" %}
     {% endfor %}
     </section>
