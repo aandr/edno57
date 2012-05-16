@@ -11,3 +11,7 @@ class Haiku(models.Model):
 
     def __unicode__(self):
         return u"%s (by %s)" % (self.text, self.user.username)
+
+    class Meta:
+        get_latest_by = 'created'
+        ordering = ('-created',)
