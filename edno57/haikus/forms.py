@@ -11,9 +11,7 @@ class NewHaikuForm(forms.ModelForm):
 
     def clean_text(self):
         text = self.cleaned_data['text']
-        
         syllable_count = count_syllables(text)
-        #pdb.set_trace()
         if syllable_count != 17:
             raise forms.ValidationError("Това не е валидно хайку (има само или цели %s срички)!" % syllable_count)
 
