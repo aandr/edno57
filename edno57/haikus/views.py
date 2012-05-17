@@ -1,8 +1,7 @@
-from django.views.generic import ListView
-from django.template.response import TemplateResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.shortcuts import *
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, CreateView
+
 from haikus.models import Haiku
 from haikus.forms import NewHaikuForm
 
@@ -20,26 +19,20 @@ class UserPage(ListView):
         return Haiku.objects.filter(user__username=self.kwargs['username'])
 
     def get_context_data(self, **kwargs):
-        context = super(self.__class__, self).get_context_data(**kwargs)
-        context['user'] = User.objects.get(username = self.kwargs['username'])
-        context['is_me'] = self.request.user == context['user']
+        context = super(UserPage, self).get_context_data(**kwargs)
+        context['author'] = self.kwargs['username']
         return context
 
-def user_page(request, username):
-    user = User.objects.get(username = username)
-    is_me = request.user == user
-    haiku_list = user.haiku_set.all()
-    return TemplateResponse(request, 'userpage.html', locals())
+class AddHaiku(CreateView):
+    form_class = NewHaikuForm
+    success_url = '/'
+    template_name = "homepage.html"
 
-@login_required
-def add_haiku(request):
-    if request.method != 'POST':
-        raise Exception
+    def get_form_kwargs(self):
+        kwargs = super(AddHaiku, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
-    haiku = Haiku(user = request.user)
-    form = NewHaikuForm(request.POST, instance = haiku)
-    form.save()
-
-
-    return redirect("user-page", username = request.user.username)
-
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(AddHaiku, self).dispatch(request, *args, **kwargs)

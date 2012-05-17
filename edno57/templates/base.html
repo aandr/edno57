@@ -8,8 +8,8 @@
         <div id="wrapper">
         <header>
         <nav>
-        {% if request.user.is_authenticated %}
-        Здрасти, <b><a href="/{{ request.user.username }}">{{ request.user.username }}</a></b>! |
+        {% if user.is_authenticated %}
+        Здрасти, <b><a href="/{{ user.username }}">{{ user.username }}</a></b>! |
         <a href="/logout">Излез</a>
         {% else %}
         <a href="/login">Влез в едно57</a>

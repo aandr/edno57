@@ -3,7 +3,7 @@
 {% block title %}Едно57: {{ user.username }}{% endblock %}
 
 {% block body %}
-    {% if is_me %}
+    {% if user.username == author %}
     {% include "post_form.html" %}
     {% endif %}
 
@@ -11,7 +11,7 @@
     {% if is_me %}
     <h2>Твойте хайкута</h2>
     {% else %}
-    <h2>Хайкутата на {{ user.username }}</h2>
+    <h2>Хайкутата на {{ author }}</h2>
     {% endif %}
 
     {% for haiku in haiku_list %}
