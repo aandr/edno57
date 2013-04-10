@@ -1,4 +1,3 @@
-# Sane Django settings
 import os
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__)) + '/'
 PROJECT_NAME = os.path.basename(os.path.dirname(__file__))
@@ -27,7 +26,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 SECRET_KEY = '$wwhrf3_8vklhqys8%fx9eufu=l39e!^f0!++zt58#&_@rw+*&'
@@ -35,7 +33,6 @@ SECRET_KEY = '$wwhrf3_8vklhqys8%fx9eufu=l39e!^f0!++zt58#&_@rw+*&'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -94,4 +91,3 @@ try:
     from local_settings import *
 except:
     pass
-

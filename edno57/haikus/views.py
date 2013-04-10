@@ -5,6 +5,7 @@ from django.views.generic import ListView, CreateView
 from haikus.models import Haiku
 from haikus.forms import NewHaikuForm
 
+
 class Homepage(ListView):
     model = Haiku
     template_name = 'homepage.html'
@@ -22,6 +23,7 @@ class UserPage(ListView):
         context = super(UserPage, self).get_context_data(**kwargs)
         context['author'] = self.kwargs['username']
         return context
+
 
 class AddHaiku(CreateView):
     form_class = NewHaikuForm

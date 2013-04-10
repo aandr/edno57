@@ -8,4 +8,3 @@ DATABASES = {
         'PORT': '',
     }
 }
-

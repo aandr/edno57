@@ -1,5 +1,6 @@
 from django.template.response import TemplateResponse
 
+
 def calculator(request):
     if request.method == "POST":
         a = int(request.POST['a'])
@@ -7,5 +8,3 @@ def calculator(request):
         result = a + b
 
     return TemplateResponse(request, 'calculator.html', locals())
-
-
