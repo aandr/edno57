@@ -3,12 +3,12 @@
 {% block title %}Едно57: Добре дошли!{% endblock %}
 
 {% block body %}
-    {% include "post_form.html" %}
+{% include "post_form.html" %}
 
-    <section>
+<section>
     <h2>Последните хайкута:</h2>
     {% for haiku in haiku_list %}
-        {% include "partial_haiku.html" %}
+    {% include "partial_haiku.html" %}
     {% endfor %}
-    </section>
+</section>
 {% endblock %}

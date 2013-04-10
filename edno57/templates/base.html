@@ -6,25 +6,25 @@
     </head>
     <body>
         <div id="wrapper">
-        <header>
-        <nav>
-        {% if user.is_authenticated %}
-        Здрасти, <b><a href="/{{ user.username }}">{{ user.username }}</a></b>! |
-        <a href="/logout">Излез</a>
-        {% else %}
-        <a href="/login">Влез в едно57</a>
-        {% endif %}
-        </nav>
-        <h1><a href="/">едно57</a></h1>
-        </header>
+            <header>
+                <nav>
+                    {% if user.is_authenticated %}
+                    Здрасти, <b><a href="/{{ user.username }}">{{ user.username }}</a></b>! |
+                    <a href="/logout">Излез</a>
+                    {% else %}
+                    <a href="/login">Влез в едно57</a>
+                    {% endif %}
+                </nav>
+                <h1><a href="/">едно57</a></h1>
+            </header>
 
-        {% block body %}
-        Body goes here
-        {% endblock %}
+            {% block body %}
+            Body goes here
+            {% endblock %}
 
         </div>
         <footer>
-        <p>Едно57 се храни с понита. <a href="http://fmi.py-bg.net">Python във ФМИ</a></p>
+            <p>Едно57 се храни с понита. <a href="http://fmi.py-bg.net">Python във ФМИ</a></p>
         </footer>
     </body>
 </html>
