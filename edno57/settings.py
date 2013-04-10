@@ -7,6 +7,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Alek Andreev', 'alek@zvuk.net'),
+    ('Kiril Vladimiroff', 'kiril@vladimiroff.org'),
 )
 
 MANAGERS = ADMINS
@@ -54,10 +55,16 @@ LOGIN_REDIRECT_URL = "/"
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
+            'class': 'django.utils.log.AdminEmailHandler',
+            'filters': ['require_debug_false'],
         }
     },
     'loggers': {
@@ -70,7 +77,6 @@ LOGGING = {
 }
 
 INSTALLED_APPS = (
-    'django_extensions',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -81,7 +87,6 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     # Add your apps here
-    'django_extensions',
     'calculator',
     'haikus',
     'feedback',
