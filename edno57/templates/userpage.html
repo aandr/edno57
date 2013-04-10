@@ -8,7 +8,7 @@
 {% endif %}
 
 <section>
-    {% if is_me %}
+    {% if request.user == user %}
     <h2>Твойте хайкута</h2>
     {% else %}
     <h2>Хайкутата на {{ author }}</h2>

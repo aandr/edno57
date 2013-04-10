@@ -1,6 +1,6 @@
 <section class="post">
     <span class="errors">{{ form.errors.text.pop }}</span>
-    <form method="POST" action="/add">
+    <form method="POST" action="/">
         {% csrf_token %}
         <textarea name="text" rows="3" placeholder="Напиши хайкуто тук"></textarea>
         <input type="submit" value="Жега">
