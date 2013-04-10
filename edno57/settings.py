@@ -44,7 +44,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -86,16 +85,10 @@ INSTALLED_APPS = (
 
     # Add your apps here
     'django_extensions',
-    'debug_toolbar',
     'calculator',
     'haikus',
     'feedback',
 )
-
-INTERNAL_IPS = ('127.0.0.1',)
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
-}
 
 try:
     from local_settings import *
