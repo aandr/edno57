@@ -10,26 +10,26 @@ class HaikuTest(unittest.TestCase):
         if is_new:
             self.user.set_password('parola')
             self.user.save()
-        self.client = Client().post('/login', {'username': 'vanko', 'password': 'parola'}).client
+        self.client = Client()
+        self.client.login(username='vanko', password='parola')
 
     def test_login(self):
         res = self.client.get('/')
         self.assertEqual(self.user, res.context['user'])
 
     def test_add_haiku(self):
-        haiku_text = u"Това е моето хайку"
-        res = self.client.post('/add', {'text': haiku_text})
-        self.assertEqual(302, res.status_code)
-
+        haiku_text = "На клон изсъхнал настръхнали са птици след силна буря."
+        res = self.client.post('', {'text': haiku_text})
+        self.assertEqual(200, res.status_code)
         res = self.client.get('/')
-        self.assertTrue(haiku_text in res.content)
+        self.assertTrue(haiku_text.encode('UTF-8') in res.content)
 
     def test_loggedout_add_haiku(sefl):
         c = Client()
 
         count_before = Haiku.objects.all().count()
         haiku_text = "This is my non-Cyrillic haiku"
-        c.post('/add', {'text': haiku_text})
+        c.post('', {'text': haiku_text})
         count_after = Haiku.objects.all().count()
 
         sefl.assertEqual(count_before, count_after)
